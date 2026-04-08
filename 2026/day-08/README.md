@@ -75,8 +75,10 @@ You should see the **Nginx welcome page**!
 **Step 2: Save Logs to File**
 
 **Step 3: Download Log File to Your Local Machine**
+
 ```bash
 # On your local machine (new terminal window)
+
 # For AWS:
 scp -i your-key.pem ubuntu@<your-instance-ip>:~/nginx-logs.txt .
 
