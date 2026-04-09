@@ -10,7 +10,7 @@ Take a **one-day pause** to consolidate everything from Days 01–11 so you don�
 
 ## What to Review (pick at least one per section)
 - **Mindset & plan:** revisit your Day 01 learning plan—are your goals still right? any tweaks?  
-- **Processes & services:** rerun 2 commands from Day 04/05 (e.g., `ps`, `systemctl status`, `journalctl -u <service>`); jot what you observed today.  
+- **Processes & services:** rerun 2 commands from Day 04/05 (e.g., `ps`, `systemctl status`, `journalctl -u <service>`); note what you observed today.  
 - **File skills:** practice 3 quick ops from Days 06–11 (e.g., `echo >>`, `chmod`, `chown`, `ls -l`, `cp`, `mkdir`).  
 - **Cheat sheet refresh:** skim your Day 03 commands—highlight 5 you’d reach for first in an incident.  
 - **User/group sanity:** recreate one small scenario from Day 09 or Day 11 (create a user or change ownership) and verify with `id`/`ls -l`.
