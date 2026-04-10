@@ -1,0 +1,78 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host google.com:443 was resolved.
+* IPv6: 2607:f8b0:4004:c19::8a, 2607:f8b0:4004:c19::65, 2607:f8b0:4004:c19::66, 2607:f8b0:4004:c19::8b
+* IPv4: 142.251.163.113, 142.251.163.138, 142.251.163.100, 142.251.163.101, 142.251.163.139, 142.251.163.102
+*   Trying 142.251.163.113:443...
+* Connected to google.com (142.251.163.113) port 443
+* ALPN: curl offers h2,http/1.1
+} [5 bytes data]
+* TLSv1.3 (OUT), TLS handshake, Client hello (1):
+} [512 bytes data]
+*  CAfile: /etc/ssl/certs/ca-certificates.crt
+*  CApath: /etc/ssl/certs
+{ [5 bytes data]
+* TLSv1.3 (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+{ [15 bytes data]
+* TLSv1.3 (IN), TLS handshake, Certificate (11):
+{ [6342 bytes data]
+* TLSv1.3 (IN), TLS handshake, CERT verify (15):
+{ [79 bytes data]
+* TLSv1.3 (IN), TLS handshake, Finished (20):
+{ [52 bytes data]
+* TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+} [1 bytes data]
+* TLSv1.3 (OUT), TLS handshake, Finished (20):
+} [52 bytes data]
+* SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384 / X25519 / id-ecPublicKey
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=*.google.com
+*  start date: Mar 23 08:36:28 2026 GMT
+*  expire date: Jun 15 08:36:27 2026 GMT
+*  subjectAltName: host "google.com" matched cert's "google.com"
+*  issuer: C=US; O=Google Trust Services; CN=WR2
+*  SSL certificate verify ok.
+*   Certificate level 0: Public key type EC/prime256v1 (256/128 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 1: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 2: Public key type RSA (4096/152 Bits/secBits), signed using sha384WithRSAEncryption
+} [5 bytes data]
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://google.com/
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: google.com]
+* [HTTP/2] [1] [:path: /]
+* [HTTP/2] [1] [user-agent: curl/8.5.0]
+* [HTTP/2] [1] [accept: */*]
+} [5 bytes data]
+> GET / HTTP/2
+> Host: google.com
+> User-Agent: curl/8.5.0
+> Accept: */*
+>
+{ [5 bytes data]
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+{ [282 bytes data]
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+{ [282 bytes data]
+* old SSL session ID is stale, removing
+{ [5 bytes data]
+< HTTP/2 301
+< location: https://www.google.com/
+< content-type: text/html; charset=UTF-8
+< content-security-policy-report-only: object-src 'none';base-uri 'self';script-src 'nonce-L3Ebp8teY5MPjMSfHPRJgA' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp
+< date: Fri, 10 Apr 2026 10:47:51 GMT
+< expires: Sun, 10 May 2026 10:47:51 GMT
+< cache-control: public, max-age=2592000
+< server: gws
+< content-length: 220
+< x-xss-protection: 0
+< x-frame-options: SAMEORIGIN
+< alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+<
+{ [220 bytes data]
+100   220  100   220    0     0   4456      0 --:--:-- --:--:-- --:--:--  4489
+* Connection #0 to host google.com left intact
