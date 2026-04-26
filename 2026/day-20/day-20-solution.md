@@ -92,6 +92,7 @@ fi
 
 if [ ! -f $log_file ]; then
         echo "File does not exist"
+        exit 1
 fi
 
 
@@ -126,7 +127,7 @@ top_errors() {
         echo "***** Top Error Messages *****"
         echo
         echo "Occurrence -- Description ----"
-        grep '\[error\]' File_logs/Apace_2k_logs.log | awk '{$1=$2=$3=$4=$5=$6=""; print $0}' | sort | uniq -c | sort -rn | head -5
+        grep '\[error\]' $log_file | awk '{$1=$2=$3=$4=$5=$6=""; print $0}' | sort | uniq -c | sort -rn | head -5
         echo
 }
 
@@ -165,6 +166,9 @@ if [ -d "$archieve_dir" ]; then
 else
         mkdir "$archieve_dir"
         log_report > $archieve_dir/log_report_$timestamp.txt
+        #we're not moving it actually to prevent it from location changes of log file"
+        #mv "$log_file" "$archieve_dir"
+        #echo "$log_file has been moved to $archieve_dir"
         echo "Log report has been generated"
         echo "Note : You can find the report in Archieves folder"
 fi
