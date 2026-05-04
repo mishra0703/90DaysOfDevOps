@@ -347,4 +347,3 @@ We know how to branch and push to GitHub. Now it's time to learn how branches co
     - Same change appears twice with different hashes — confusing history
     - Picked commit may depend on other commits you didn't pick
     - Hard to know where commit originally came from
-    
