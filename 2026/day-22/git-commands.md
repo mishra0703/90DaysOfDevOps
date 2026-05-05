@@ -129,3 +129,92 @@
 | `git restore --staged <file>` | Unstage a file but keep changes in working directory |
 | `git clean -fd` | Delete all untracked files and folders permanently |
 | `git reflog` | View history of all HEAD movements (recovery tool after hard reset) |
+
+
+---
+
+## GH CLI Commands
+
+### GH CLI — Auth
+
+| Command | Description |
+|--------|-------------|
+| `gh auth login` | Authenticate with GitHub via browser, PAT, or SSH |
+| `gh auth status` | Check which account is active and token scopes |
+| `gh auth refresh -h github.com -s delete_repo` | Request additional permission scope |
+
+---
+
+### GH CLI — Repositories
+
+| Command | Description |
+|--------|-------------|
+| `gh repo create` | Create a new GitHub repo interactively |
+| `gh repo clone username/repository` | Clone a repo using gh instead of git clone |
+| `gh repo fork username/repository` | Fork a repo using gh instead of doing it on remote |
+| `gh repo view` | View details of current repository |
+| `gh repo view username/repo --web` | Open repo directly in browser |
+| `gh repo list` | List all your repositories with details |
+| `gh repo delete repo_name` | Delete a repository (needs delete_repo scope) |
+| `gh auth refresh -h github.com -s delete_repo` | This is the scope for Requesting additional permission scope |
+
+
+---
+
+### GH CLI — Issues
+
+| Command | Description |
+|--------|-------------|
+| `gh issue create` | Create an issue interactively |
+| `gh issue create --title "title" --body "body" --label "bug"` | Create issue quickly with flags |
+| `gh issue list` | List all open issues in repo |
+| `gh issue view 1` | View a specific issue by number |
+| `gh issue close 1` | Close a specific issue by number |
+
+---
+
+### GH CLI — Pull Requests
+
+| Command | Description |
+|--------|-------------|
+| `gh pr create` | Create a pull request interactively |
+| `gh pr create --base main --head feature --title "title" --body "body"` | Create PR quickly with flags |
+| `gh pr list` | List all open PRs |
+| `gh pr list --state open/closed/merged/all` | Filter PRs by state |
+| `gh pr view` | View current branch's PR details |
+| `gh pr view 5` | View specific PR by number |
+| `gh pr view --web` | Open PR in browser |
+| `gh pr status` | Dashboard of all PRs relevant to you |
+| `gh pr checks` | See only CI/CD checks status |
+| `gh pr checkout 5` | Switch locally to PR #5's branch |
+| `gh pr review 5 --approve` | Approve a PR |
+| `gh pr review 5 --request-changes --body "reason"` | Request changes on a PR |
+| `gh pr review 5 --comment --body "comment"` | Leave a comment on a PR |
+| `gh pr merge 5 --merge` | Merge PR with standard merge commit |
+| `gh pr merge 5 --squash` | Merge PR squashing all commits into one |
+| `gh pr merge 5 --rebase` | Merge PR using rebase (linear history) |
+| `gh pr merge 5 --squash --delete-branch` | Merge and auto-delete feature branch |
+
+
+---
+
+### Useful Commands
+
+| Command | Description |
+|--------|-------------|
+| `gh status` | Provides a quick overview of your work in the current repository. |
+| `gh help` | Accesses the built-in documentation for any command. |
+|`-web` | Most commands support this flag to transition to the browser when visual detail is needed. |
+
+
+---
+
+### Custom Aliases
+
+
+*You can create custom shortcuts for frequently used commands*
+
+| Command | Description |
+|--------|-------------|
+|`gh alias set rl "repo list"` | Now, instead of gh repo list, you can simply run: |
+| `gh rl` | Will show repo list | 
