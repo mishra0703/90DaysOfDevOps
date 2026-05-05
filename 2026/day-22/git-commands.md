@@ -69,6 +69,7 @@
 | `git push origin --delete <branch>` | Delete branch from remote |
 | `git branch -M main` | Rename current branch to main |
 
+---
 
 ### Merging & Rebasing
 
@@ -83,6 +84,8 @@
 | `git rebase --abort` | Cancel an ongoing rebase |
 | `git rebase --continue` | Continue rebase after resolving conflict |
 
+---
+
 ### Stashing
 
 | Command | Description |
@@ -94,6 +97,7 @@
 | `git stash drop stash@{0}` | Delete a specific stash |
 | `git stash clear` | Delete all stashes |
 
+---
 
 ### Cherry-Picking
 
@@ -106,3 +110,22 @@
 | `git cherry-pick --abort` | Cancel cherry-pick in progress |
 | `git cherry-pick --continue` | Continue after resolving conflict |
 | `git cherry-pick -x <hash>` | Apply commit and mention original hash in message |
+
+---
+
+### Undoing Changes
+
+| Command | Description |
+|--------|-------------|
+| `git revert <commit>` | Create new commit that undoes a commit (safe) |
+| `git reset --soft HEAD~1` | Undo last commit, keep changes staged |
+| `git reset --mixed HEAD~1` | Undo last commit, keep changes unstaged (default reset behavior) |
+| `git reset --hard HEAD~1` | Undo last commit and delete all changes |
+| `git reset --hard <commit-hash>` | Jump to a specific commit and delete everything after it |
+| `git restore <file>` | Discard uncommitted changes in a file |
+| `git checkout -- <file>` | Discard changes (older syntax) |
+| `git reset HEAD~N` | Undo last N commits, keep changes unstaged |
+| `git revert HEAD~3..HEAD` | Revert last 3 commits safely (creates 3 new commits) |
+| `git restore --staged <file>` | Unstage a file but keep changes in working directory |
+| `git clean -fd` | Delete all untracked files and folders permanently |
+| `git reflog` | View history of all HEAD movements (recovery tool after hard reset) |
