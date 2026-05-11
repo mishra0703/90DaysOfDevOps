@@ -32,46 +32,46 @@ The goal is to identify gaps, revisit topics you struggled with, and make sure y
 
 ### Task 1: Self-Assessment Checklist
 Go through the checklist below. For each item, mark yourself honestly:
-- **Can do confidently**
-- **Need to revisit**
-- **Haven't done yet**
+- **Can do confidently**  (D : Done)  
+- **Need to revisit**     (R : Revise)
+- **Haven't done yet**    (N : Not done yet)  
 
 #### Linux
-- [ ] Navigate the file system, create/move/delete files and directories
-- [ ] Manage processes — list, kill, background/foreground
-- [ ] Work with systemd — start, stop, enable, check status of services
-- [ ] Read and edit text files using vi/vim or nano
-- [ ] Troubleshoot CPU, memory, and disk issues using top, free, df, du
-- [ ] Explain the Linux file system hierarchy (/, /etc, /var, /home, /tmp, etc.)
-- [ ] Create users and groups, manage passwords
-- [ ] Set file permissions using chmod (numeric and symbolic)
-- [ ] Change file ownership with chown and chgrp
-- [ ] Create and manage LVM volumes
-- [ ] Check network connectivity — ping, curl, netstat, ss, dig, nslookup
-- [ ] Explain DNS resolution, IP addressing, subnets, and common ports
+- [ D ] Navigate the file system, create/move/delete files and directories
+- [ D ] Manage processes — list, kill, background/foreground
+- [ D ] Work with systemd — start, stop, enable, check status of services
+- [ D ] Read and edit text files using vi/vim or nano
+- [ D ] Troubleshoot CPU, memory, and disk issues using top, free, df, du
+- [ R ] Explain the Linux file system hierarchy (/, /etc, /var, /home, /tmp, etc.)
+- [ D ] Create users and groups, manage passwords
+- [ D ] Set file permissions using chmod (numeric and symbolic)
+- [ D ] Change file ownership with chown and chgrp
+- [ D ] Create and manage LVM volumes
+- [ R ] Check network connectivity — ping, curl, netstat, ss, dig, nslookup
+- [ R ] Explain DNS resolution, IP addressing, subnets, and common ports
 
 #### Shell Scripting
-- [ ] Write a script with variables, arguments, and user input
-- [ ] Use if/elif/else and case statements
-- [ ] Write for, while, and until loops
-- [ ] Define and call functions with arguments and return values
-- [ ] Use grep, awk, sed, sort, uniq for text processing
-- [ ] Handle errors with set -e, set -u, set -o pipefail, trap
-- [ ] Schedule scripts with crontab
+- [ D ] Write a script with variables, arguments, and user input
+- [ D ] Use if/elif/else and case statements
+- [ R ] Write for, while, and until loops
+- [ D ] Define and call functions with arguments and return values
+- [ D ] Use grep, awk, sed, sort, uniq for text processing
+- [ D ] Handle errors with set -e, set -u, set -o pipefail, trap
+- [ D ] Schedule scripts with crontab
 
 #### Git & GitHub
-- [ ] Initialize a repo, stage, commit, and view history
-- [ ] Create and switch branches
-- [ ] Push to and pull from GitHub
-- [ ] Explain clone vs fork
-- [ ] Merge branches — understand fast-forward vs merge commit
-- [ ] Rebase a branch and explain when to use it vs merge
-- [ ] Use git stash and git stash pop
-- [ ] Cherry-pick a commit from another branch
-- [ ] Explain squash merge vs regular merge
-- [ ] Use git reset (soft, mixed, hard) and git revert
-- [ ] Explain GitFlow, GitHub Flow, and Trunk-Based Development
-- [ ] Use GitHub CLI to create repos, PRs, and issues
+- [ D ] Initialize a repo, stage, commit, and view history
+- [ D ] Create and switch branches
+- [ D ] Push to and pull from GitHub
+- [ D ] Explain clone vs fork
+- [ D ] Merge branches — understand fast-forward vs merge commit
+- [ D ] Rebase a branch and explain when to use it vs merge
+- [ D ] Use git stash and git stash pop
+- [ D ] Cherry-pick a commit from another branch
+- [ D ] Explain squash merge vs regular merge
+- [ D ] Use git reset (soft, mixed, hard) and git revert
+- [ R ] Explain GitFlow, GitHub Flow, and Trunk-Based Development
+- [ D ] Use GitHub CLI to create repos, PRs, and issues
 
 ---
 
@@ -86,15 +86,15 @@ Go through the checklist below. For each item, mark yourself honestly:
 Answer these from memory (no Googling). Then verify your answers:
 
 1. What does `chmod 755 script.sh` do?
-2. What is the difference between a process and a service?
-3. How do you find which process is using port 8080?
+2. What is the difference between a process and a service?      R
+3. How do you find which process is using port 8080?    
 4. What does `set -euo pipefail` do in a shell script?
 5. What is the difference between `git reset --hard` and `git revert`?
-6. What branching strategy would you recommend for a team of 5 developers shipping weekly?
-7. What does `git stash` do and when would you use it?
-8. How do you schedule a script to run every day at 3 AM?
-9. What is the difference between `git fetch` and `git pull`?
-10. What is LVM and why would you use it instead of regular partitions?
+6. What branching strategy would you recommend for a team of 5 developers shipping weekly?  Learn
+7. What does `git stash` do and when would you use it?      R
+8. How do you schedule a script to run every day at 3 AM?   
+9. What is the difference between `git fetch` and `git pull`?   
+10. What is LVM and why would you use it instead of regular partitions?    R
 
 ---
 
