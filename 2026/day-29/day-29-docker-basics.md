@@ -107,3 +107,9 @@ We will:
         #            ↑
         #       interactive terminal 
         ```
+
+--- 
+
+## Running Containers 
+
+![Alt Text](Running_Containers.png)
