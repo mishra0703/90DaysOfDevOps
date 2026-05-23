@@ -42,7 +42,7 @@ Go through the checklist below. For each item, mark yourself honestly:
 - [ D ] Work with systemd — start, stop, enable, check status of services
 - [ D ] Read and edit text files using vi/vim or nano
 - [ D ] Troubleshoot CPU, memory, and disk issues using top, free, df, du
-- [ R ] Explain the Linux file system hierarchy (/, /etc, /var, /home, /tmp, etc.)
+- [ D ] Explain the Linux file system hierarchy (/, /etc, /var, /home, /tmp, etc.)
 - [ D ] Create users and groups, manage passwords
 - [ D ] Set file permissions using chmod (numeric and symbolic)
 - [ D ] Change file ownership with chown and chgrp
