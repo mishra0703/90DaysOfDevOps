@@ -1,0 +1,27 @@
+services:
+  sql-app:
+    image: mysql:8.0
+    container_name: my-sql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - sql-data:/var/lib/mysql
+
+  app:
+    image: alpine
+    container_name: my-alpine-app
+    environment:
+      DB_HOST: sql-app
+      DB_NAME: ${MYSQL_DATABASE}
+      DB_USER: ${MYSQL_USER}
+      DB_PASS: ${MYSQL_PASSWORD}
+    command: sleep infinity
+    depends_on:
+      - sql-app
+
+volumes:
+  sql-data:
