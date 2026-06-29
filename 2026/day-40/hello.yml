@@ -1,0 +1,32 @@
+name: Hello Workflow        # Label for the whole workflow, shown in the Actions tab
+
+on:
+  push:                     # Trigger: run this workflow on every push to the repo
+
+jobs:
+  greet:                    # Job name = "greet" (your own arbitrary identifier)
+    runs-on: ubuntu-latest   # Runner: spin up a fresh Ubuntu VM for this job
+    steps:
+      - name: Code Checkout       # Step 1, labeled "Code Checkout" in logs
+        uses: actions/checkout@v4 # Runs the official checkout Action → clones your repo onto the runner
+
+      - name: Print Message       # Step 2, labeled "Print Message" in logs
+        run: echo "Hello from GitHub Actions"  # Runs a raw shell command on the runner
+
+      # Some more jobs...
+      - name: Get current date
+        run: echo "$(date +'%Y-%m-%d_%H-%M-%S')"
+
+      - name: Print branch name
+        run: echo "The branch is $GITHUB_REF_NAME"
+  
+      - name: List Files in repo
+        run: git ls-files
+
+      - name: Print OS via Context
+        run: echo "The runner OS context is ${{ runner.os }}"
+
+      - name: On purpose error 
+      # run: dcoker --version     # Created a Typo error to purposely failed the pipeline
+        run: docker --version       # Fixed typo error
+      
