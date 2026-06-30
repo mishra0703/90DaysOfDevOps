@@ -1,0 +1,32 @@
+name: Python Lint
+
+on:
+  # Runs on every push, to any branch (no branch filter specified)
+  push:
+
+jobs:
+  Python_Installation:
+    runs-on: ubuntu-latest
+
+    # strategy.matrix — runs this SAME job multiple times in parallel,
+    # once for each value in the list below.
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    # This creates 3 separate runner instances, one per Python version, instead of you writing 3 near-identical jobs by hand.
+
+
+    # Ordered list of steps — these run identically inside EACH matrix instance,
+    # just with ${{ matrix.python-version }} swapped for that instance's value
+    steps:
+      # Step 1: install the specific Python version for this matrix run
+      - name: Installing Python ${{ matrix.python-version }}
+        # '|' = multi-line run block — each line below executes as a separate
+        # shell command, in sequence, within the same shell session
+        run: |
+          sudo add-apt-repository ppa:deadsnakes/ppa -y
+          sudo apt-get update
+          sudo apt-get install python${{ matrix.python-version }} -y
+
+      - name: Verify Installation
+        run: python${{ matrix.python-version }} -V

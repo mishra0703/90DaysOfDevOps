@@ -1,0 +1,18 @@
+name: Schedule Trigger
+
+on:
+  # Schedule trigger — runs the workflow on a timer (cron), not on push/PR events
+  schedule:
+    - cron: '0 00 * * *'
+    # Cron expression: "min hr day-of-month mon day-of-week"
+    # '0 00 * * *' → minute=0, hour=00 (midnight) → runs once every day at 00:00 UTC
+    # NOTE: GitHub Actions cron always runs in UTC, NOT in local time.
+    # 00:00 UTC = 5:30 AM IST (UTC+5:30)
+    
+
+jobs:
+  Schedule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking Scheduled Trigger
+        run: echo "This workflow at runs every 5 minutes"

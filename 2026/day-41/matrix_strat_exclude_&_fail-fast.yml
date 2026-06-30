@@ -1,0 +1,53 @@
+name: Python Lint
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  Python_Installation:
+
+    # Here runner will be Pulled from matrix.os (so each matrix combo runs on its own OS-specific runner)
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      # fail-fast: true (the DEFAULT) — If any matrix job fails, GitHub immediately cancels all other still-running matrix jobs, even ones that would've passed.
+
+      fail-fast: false
+      # fail-fast: false — Every matrix job runs to completion independently, regardless of siblings failing.
+
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.10", "3.11", "3.12"]
+        # Three Python versions — combined with Two OS, gives 2x3 = 6 combos
+        # exclude — removes specific combos from the matrix
+
+        # Here Python 3.10 on Windows entirely will be skipped (So, 5 combos run instead of 6)
+        exclude:
+          - python-version: "3.10"
+            os: windows-latest
+
+    steps:
+      - name: Installing Python (Ubuntu)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo add-apt-repository ppa:deadsnakes/ppa -y
+          sudo apt-get update
+          sudo apt-get install python${{ matrix.python-version }} -y
+
+      - name: Installing Python (Windows)
+        if: matrix.os == 'windows-latest'
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Verify Installation on Ubuntu
+        if: matrix.os == 'ubuntu-latest'
+        run: python${{ matrix.python-version }} -V
+
+      # --- VERIFY PYTHON ON WINDOWS ---
+      # setup-python already puts the correct version on PATH as just "python",
+      # no version suffix needed (unlike the apt/Ubuntu path above)
+      - name: Verify Installation on Windows
+        if: matrix.os == 'windows-latest'
+        run: python --version

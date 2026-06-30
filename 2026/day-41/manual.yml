@@ -1,0 +1,30 @@
+name: Manual Trigger
+
+on:
+  # workflow_dispatch — allows this workflow to be triggered manually
+  # from the "Run workflow" button in the Actions tab (or via API/gh CLI)
+  workflow_dispatch:
+    # inputs — defines a form of custom values you can pass in , at the time you click "Run workflow"
+    inputs:
+      # Input name "environment" — accessible later as ${{ inputs.environment }}
+      environment:
+        # description — label text shown next to this field in the UI form
+        description: Choose one
+        # type: choice — renders as a dropdown instead of free text
+        type: choice
+        # required: true — workflow run will be blocked if this isn't selected
+        required: true
+        # default — pre-selected value shown in the dropdown
+        default: staging
+        # options — the list of valid choices shown in the dropdown
+        options:
+          - staging
+          - production
+
+jobs:
+  Manual_Trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Environment Name
+        # inputs.environment pulls whatever the user picked in the dropdown at trigger time (either "stagging" or "production")
+        run: echo "Environment name is ${{ inputs.environment }} "
