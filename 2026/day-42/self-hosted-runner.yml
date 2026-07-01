@@ -1,0 +1,18 @@
+  name: Self-Hosted Runner
+
+  on:
+      push: 
+        branches: [main]
+
+  jobs:
+      Self_Hosted_Runner:
+          runs-on: self-hosted
+          steps:
+              - name: Testing Self-Hosted Runner            
+                run: |
+                  echo "The host's system hostname is : $(hostname)"
+                  echo "My Working Directory name is : $GITHUB_WORKSPACE"
+                  mkdir /home/$USER/my-test-folder
+                  touch /home/$USER/my-test-folder/hello_from_github.txt
+                  echo "Hello this message is printing from github actions" > /home/$USER/my-test-folder/hello_from_github.txt
+

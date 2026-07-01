@@ -1,0 +1,21 @@
+  name: Github Hosted Runners 
+
+  on:
+      push: 
+        branches: [main]
+
+  jobs:
+      Runner_Test:
+          name: Job is runnning on ${{ matrix.os }}     
+          strategy:
+            matrix: 
+              os: [ubuntu-latest , macos-latest , windows-latest]
+          runs-on: ${{ matrix.os }}
+          steps:
+              - name: On ${{ matrix.os }}            
+                run: |
+                  echo "The operating system is ${{ runner.os }}"
+                  echo "The host's system hostname is: $(hostname)"
+                  echo "The registered GitHub runner name is: $RUNNER_NAME"
+                  echo "The user running this job is ${{ github.actor }}"
+
