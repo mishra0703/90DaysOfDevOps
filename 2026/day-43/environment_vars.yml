@@ -1,0 +1,24 @@
+name: Env Vars 
+
+on:
+  push:
+      
+
+env:
+    APP_NAME: myapp
+
+jobs:
+  Printing_Env-Vars:
+    runs-on: ubuntu-latest
+    env:
+        ENVIRONMENT: staging
+    steps:
+      - name: Running Build
+        env:
+            VERSION: 1.0.0
+        run: |
+            echo "App Name : $APP_NAME"
+            echo "Environment on which app is running : $ENVIRONMENT"
+            echo "App Version: $VERSION"
+            echo "The commit id of this commit is ${{ github.sha }}"
+            echo "The actor(who triggered the run) name of this workflow is  ${{ github.actor }}"

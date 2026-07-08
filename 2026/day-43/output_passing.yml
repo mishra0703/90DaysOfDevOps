@@ -1,0 +1,22 @@
+name: Passing Output from Job to Job 
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  Job1:
+    runs-on: ubuntu-latest
+    outputs:
+      job1_output: ${{ steps.job_id.outputs.Result }}
+    steps:      
+      - name: OutPut
+        id: job_id
+        run: echo "Result=This sentence is printing from job1" >> "$GITHUB_OUTPUT"
+
+  Job2:
+    runs-on: ubuntu-latest
+    needs: Job1
+    steps:
+      - name: Taking Output from Job1
+        run: echo "OutPut of Job1 is - ${{ needs.Job1.outputs.job1_output }}"
