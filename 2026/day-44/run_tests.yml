@@ -1,0 +1,22 @@
+name: Testing app.py in CI
+
+on:
+    workflow_dispatch: 
+
+
+jobs:
+    Run_Test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v4
+
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                python-version: '3.11'
+
+            - name: Running Script
+              run: python test-app/app.py
+
+            

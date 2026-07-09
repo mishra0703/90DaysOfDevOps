@@ -1,0 +1,21 @@
+name: Upload Artifact
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate-log:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate a log file
+        run: |
+          echo "Build started at $(date)" >> build.log
+          echo "Running on branch: ${{ github.ref_name }}" >> build.log
+          echo "Triggered by: ${{ github.actor }}" >> build.log
+          echo "Build finished successfully" >> build.log
+
+      - name: Upload log as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
