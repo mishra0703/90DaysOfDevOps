@@ -67,6 +67,11 @@ Test it: push to a feature branch and verify the image is built but NOT pushed.
 
 
 
+![](Image%20Pulled%20from%20dockerhub.png)
+![](Running%20Pulled%20Image.png)
+![](Image%20ran%20successfully.png)
+
+
 ### What is the full journey from `git push` to a running container?
 
 ```bash
