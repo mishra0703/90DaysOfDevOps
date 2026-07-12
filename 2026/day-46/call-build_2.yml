@@ -1,0 +1,24 @@
+name: Calling Workflow
+
+on:
+    # push:
+    #     branches: [main]
+      workflow_dispatch: 
+
+
+jobs:
+    Calling_Workflow:
+       uses: ./.github/workflows/reusable-build.yml
+       with:
+         app_name: "First_App"
+         environment: "production"
+       secrets:
+         DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+
+
+    Print_Version:
+        needs: Calling_Workflow
+        runs-on: ubuntu-latest
+        steps:
+          - name: Print Build Version
+            run: echo "Build version is ${{ needs.Calling_Workflow.outputs.build_version }}"

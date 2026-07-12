@@ -1,0 +1,44 @@
+name: Custom Greet Action
+description: A composite action to generate a customized greeting
+inputs:
+  name:
+    required: true
+    default: 'User'
+  language:                                   
+    required: false
+    default: 'English'
+outputs:
+  greeting:
+    value: ${{ steps.greet.outputs.message }}
+  greeted:                                    
+    value: ${{ steps.set-greeted.outputs.greeted }}
+runs:
+  using: composite
+  steps:
+    - name: Greeting Message
+      id: greet
+      shell: bash
+      run: |
+        MESSAGE="Hello, ${{ inputs.name }}! Welcome to the workflow."
+        echo "message=$MESSAGE" >> $GITHUB_OUTPUT        
+
+    - name: Greet in Specified Language        
+      shell: bash
+      run: |
+        case "${{ inputs.language }}" in
+          Hindi) echo "नमस्ते, ${{ inputs.name }}!" ;;
+          Spanish) echo "¡Hola, ${{ inputs.name }}!" ;;
+          French) echo "Bonjour, ${{ inputs.name }}!" ;;
+          *) echo "Hello, ${{ inputs.name }}!" ;;
+        esac
+
+    - name: Print Date and Runner OS           
+      shell: bash
+      run: |
+        echo "Current date: $(date)"
+        echo "Runner OS: ${{ runner.os }}"
+
+    - name: Set Greeted Output                 
+      id: set-greeted
+      shell: bash
+      run: echo "greeted=true" >> $GITHUB_OUTPUT

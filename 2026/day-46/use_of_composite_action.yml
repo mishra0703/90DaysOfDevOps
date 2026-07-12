@@ -1,0 +1,23 @@
+name: Calling Composite Action
+
+on:
+    push:
+        branches: [main]
+
+
+jobs: 
+    greeting:
+        runs-on: ubuntu-latest        
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v4
+
+            - name: Run Greet Action
+              id: greet-action
+              uses: ./.github/actions/setup-and-greet
+              with:
+                name: "Prem"
+                language: "Hindi"
+
+            - name: Confirm Greeted
+              run: echo "Greeted status ${{ steps.greet-action.outputs.greeted }}"

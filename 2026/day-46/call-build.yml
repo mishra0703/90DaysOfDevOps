@@ -1,0 +1,15 @@
+name: Calling Workflow
+
+on:
+    push:
+        branches: [main]
+
+
+jobs:
+    Calling_Workflow:
+       uses: ./.github/workflows/reusable-build.yml
+       with:
+         app_name: "First_App"
+         environment: "production"
+       secrets:
+         DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}

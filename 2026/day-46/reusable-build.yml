@@ -1,0 +1,30 @@
+name: Reusable Workflow
+
+on:
+    workflow_call: 
+        inputs:
+            app_name:
+                type: string
+                required: true
+            environment:
+                type: string
+                required: true
+                default: staging
+        secrets:
+            DOCKERHUB_TOKEN: 
+                required: true
+
+
+jobs:
+    reusable_workflow:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v4
+              
+            - name: Building App
+              run: echo "Building ${{ inputs.app_name }} for ${{ inputs.environment }}"
+
+            - name: Docker Token Check
+              run: echo "DockerHub Token is set ${{ secrets.DOCKERHUB_TOKEN != '' }}"
+              
