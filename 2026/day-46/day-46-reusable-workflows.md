@@ -104,7 +104,7 @@ Create `.github/workflows/call-build.yml`:
 
 
 
-![Successfully called reusable-build.yml from call-build.yml]()
+![Successfully called reusable-build.yml from call-build.yml](Called%20Reusable%20Workflow.png)
 *Check call-build.yml in this directory*
 
 
@@ -120,7 +120,7 @@ Extend `reusable-build.yml`:
    - Reads and prints the `build_version` output
 
 
-![Successfully Printed Version from reusable-build.yml file]()
+![Successfully Printed Version from reusable-build.yml file](Printed%20output%20from%20reusable%20workflow.png)
 
 
 ---
@@ -136,9 +136,7 @@ Create a **custom composite action** in your repo at `.github/actions/setup-and-
 3. Use the composite action in a new workflow with `uses: ./.github/actions/setup-and-greet`
 
 
-![]()
-![]()
-![]()
+![](Composite%20Action.png)
 
 ---
 
