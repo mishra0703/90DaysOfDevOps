@@ -1,0 +1,53 @@
+name: PR CHECK
+
+on:
+    pull_request: 
+        branches: [main]
+
+
+
+
+jobs:
+    File_Size_Checks:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v4
+
+            - name: Check file sizes
+              run: |
+                echo "Scanning for files larger than 1MB..."
+                large_files=$(find . -type f -size +1M -not -path "./.git/*")
+                
+                if [ -n "$large_files" ]; then
+                    echo "Found files exceeding 1MB:"
+                    echo "$large_files"
+                    exit 1
+                else
+                    echo "All files are within size limit."
+                fi            
+
+    Branch_Name_Check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checking Branch Name
+              run: |
+                BRANCH_NAME="${{ github.head_ref }}"
+
+                if [[ "$BRANCH_NAME" == feature/* || "$BRANCH_NAME" == fix/* || "$BRANCH_NAME" == docs/* ]]; then
+                    echo "Branch name follows convention."
+                else
+                    echo "Branch name '$BRANCH_NAME' does not follow the required pattern (feature/*, fix/*, docs/*)."
+                    exit 1
+                fi
+
+    PR_Body_Check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checking PR Body (Description)
+              run: |
+                Description="${{ github.event.pull_request.body }}"
+
+                if [[ "$Description" == '' ]]; then
+                    echo "Description is Empty"                
+                fi

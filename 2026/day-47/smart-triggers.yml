@@ -1,0 +1,32 @@
+name: Smart Triggers
+
+
+on:
+    push:
+        branches: ['main' , 'release/*']
+        paths:                
+            - 'src/**'
+            - 'app/**'        
+
+jobs:
+    Pushed_From:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
+
+            - name: Branch Name
+              run: echo "Branch from which this commit is pushed - ${{ github.ref_name }}"
+
+            - name: Get changed files
+              id: changed-files
+              uses: tj-actions/changed-files@v45
+
+            
+            - name: List all changed files
+              run: |
+                for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+                    echo "Changed File Names are : $file"
+                done
