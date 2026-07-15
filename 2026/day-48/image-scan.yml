@@ -1,0 +1,30 @@
+name: Docker Image Scanning
+
+on:
+    workflow_call: 
+
+jobs:
+    image-scanner:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Docker Login
+              uses: docker/login-action@v3
+              with:
+                username: ${{ vars.DOCKERHUB_USERNAME }}
+                password: ${{ secrets.DOCKERHUB_TOKEN }}
+            
+            - name: Trivy Scanner
+              uses: aquasecurity/trivy-action@v0.36.0
+              with:
+                image-ref: ${{ vars.DOCKERHUB_USERNAME }}/ecommerce-fullstack-webapp:latest
+                output: 'trivy-report.txt'  
+                severity: 'CRITICAL'
+                exit-code: '1'
+
+            - name: Upload Scan Report Artifact
+              uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                name: image-scan-report
+                path: trivy-report.txt
+                retention-days: 7  
