@@ -5,13 +5,6 @@ Yesterday We created standalone Pods. The problem? Delete a Pod and it is gone f
 
 ---
 
-## Expected Output
-- At least 2 namespaces created and used
-- A Deployment running with multiple replicas
-- A scaled Deployment and a rolling update performed
-
----
-
 ## Explore Default Namespaces
 
 
