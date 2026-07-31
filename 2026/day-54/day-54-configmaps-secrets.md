@@ -111,6 +111,14 @@ Our application needs configuration — database URLs, feature flags, API keys. 
 
 - This is why , Using volume mounts for Kubernetes ConfigMaps and Secrets is significantly better than environment (env) variables due to live dynamic updates, superior data security, and proper file-structure support 
 
+
+### Error fixed
+
+- Just by adding echo; in the command we fixed the output printing error. So, the new command is like : `['/bin/sh', '-c', 'while true; do cat /etc/live-config/message; echo; sleep 5; done']`
+
+    ---
+    ![](patch%20command%20worked.png)
+    ---
 ---
 
 
