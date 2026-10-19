@@ -6,7 +6,7 @@
 # DNS – How Names Become IPs
 
 ### 1. Explain in 3–4 lines: what happens when you type `google.com` in a browser?
-    -   
+
 ```
 You type: google.com
               │
