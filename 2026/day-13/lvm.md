@@ -45,11 +45,14 @@ nvme3n1                259:7    0    5G  0 disk
     - `lvextend -L +5G(Size) /dev/myvg/mylv(LVname)`  : Increase the size of LV by 5gb
     - `lvextend -L 20G /dev/myvg/mylv` : Set total to 20 GB  
     - `lvreduce -L -5G /dev/myvg/mylv` : Remove/Decrease 5 GB
-    - *Note* : Whenever use lvextend always put -r flag to Resize filesystem too (df -h)
+    - *Note* : 
+        - Whenever use lvextend always put -r flag to Resize filesystem too
+        - Always umount the logical volume if it is mounted , otherwise we could get error in resizing
+        - Or if we don't want to umount , run `sudo lvresize -r -L -1G /dev/mapper/lv_name` (get the exact name from df -h (Only if mounted))
     - `lvresize -r -L +5G /dev/myvg/mylv` : With filesystem resize , as I said in *Note*
     - `lvrename myvg mylv newlv` or `lvrename /dev/myvg/mylv /dev/myvg/newlv`: Renaming a LV 
     - `lvremove /dev/myvg/mylv` : Delete a LV
-    - If you extend you LV by using lvextend but it is not showing in df -h , then run `resize2fs /dev/myvg/mylv` It will update the filesystem (df -h)
+    - If you extend you LV by using lvextend but it is not showing in df -h , then run `resize2fs /dev/myvg/mylv` It will update the filesystem (df -h , can only see the LV in df -h if it is mounted)
 
 10) Mount the Logical Volume 
     - `mkdir /data` : Make a folder where you want to use it as endpoint
