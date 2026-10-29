@@ -114,9 +114,10 @@ critical_log() {
         echo
         echo "----- Critical Events ------"
         echo
-        echo "Line - Status --------------- Description ---------------"
-        echo
-        awk '{for(i=6; i<=NF; i++) printf "%s ", $i; print ""}' $log_file | grep -in "critical"
+        printf "%-4s %-12s %-20s\n" "Line" "Status" "Description"
+        printf "%-4s %-12s %-20s\n" "----" "------" "-----------"
+#       awk '{for(i=1; i<=NF; i++) printf "%s ", $i; print ""}' $log_file | grep -i "critical"
+        awk '{status=$3; desc=""; for(i=4;i<=NF-2;i++) desc=desc $i " "; printf "%-4d %-12s %-20s\n", NR, status, desc}' "$log_file" | grep -i "critical"       # Formatted Style
         echo
 }
 
@@ -126,9 +127,19 @@ top_errors() {
         echo
         echo "***** Top Error Messages *****"
         echo
-        echo "Occurrence -- Description ----"
-        grep '\[error\]' $log_file | awk '{$1=$2=$3=$4=$5=$6=""; print $0}' | sort | uniq -c | sort -rn | head -5
+        printf "%-10s %-20s\n" "Occurrence" "Description"
+        printf "%-10s %-20s\n" "----------" "-----------"
+#       grep -i '\[error\]' $log_file | awk '{$1=$2=$3=$4=$5=$6=""; print $0}' | sort | uniq -c | sort -rn | head -5
+        grep '\[ERROR\]' $log_file | awk '{for(i=4;i<=NF-2;i++) printf "%s ", $i; print ""}' | sort | uniq -c | sort -rn | head -5 | awk '{count=$1; $1=""; printf "%-10s %-20s\n", count, $0}'         # Formatted Style
         echo
+
+
+# One more way to print formatted output : Using column -t (converts text input into a perfectly aligned, easy-to-read table)
+
+     # {
+     #   printf "Occurrence Description\n"
+     #   grep -i '\[error\]' "$log_file" | awk '{for(i=4;i<=NF-2;i++) printf "%s ", $i; print ""}' | sort | uniq -c | sort -rn | head -5
+     # } | column -t
 }
 
 
